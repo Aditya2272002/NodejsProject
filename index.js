@@ -1,14 +1,28 @@
+require("dotenv").config(); // for hiding our sensitive data we use dotenv
+
+
+const express = require("express"); // importing express
+const mongoose = require("mongoose");
 
 //database
 const database = require("./database");// importing the database 
 
-const express = require("express"); // importing express
 const { restart } = require("nodemon");
 
 const booky = express(); // Initialization
 
 //Configuation-> Making our app understand json form
 booky.use(express.json());
+
+
+//Establish database connection
+mongoose.connect(process.env.MONGO_CONNECTION_URL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+        }
+).then(()=> console.log("Connection is Done!!!!"));
 
 //Api creation
 
