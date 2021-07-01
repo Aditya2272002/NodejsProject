@@ -16,6 +16,6 @@ const PublicationsSchema = mongoose.Schema({
 
 
 //Create Publication Model
-const PublicationsModel = mongoose.model(PublicationsSchema);
+const PublicationsModel = mongoose.model("publications", PublicationsSchema);
 
 module.exports = PublicationsModel;

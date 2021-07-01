@@ -2,10 +2,15 @@ require("dotenv").config(); // for hiding our sensitive data we use dotenv
 
 
 const express = require("express"); // importing express
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // importing mongoose
 
 //database
 const database = require("./database");// importing the database 
+
+//Models
+const BookModels = require("./database/book");
+const AuthorModels = require("./database/author");
+const PublicationsModels = require("./database/publications");
 
 const { restart } = require("nodemon");
 
@@ -24,6 +29,8 @@ mongoose.connect(process.env.MONGO_CONNECTION_URL,{
         }
 ).then(()=> console.log("Connection is Done!!!!"));
 
+
+
 //Api creation
 
 /*
@@ -34,7 +41,7 @@ Parameter               NONE
 Methods                 GET
 */
 booky.get("/",(req, res) => {
-        //chanegs many times
+        
         return res.json({books:database.books})
 });
 
